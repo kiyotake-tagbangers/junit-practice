@@ -31,4 +31,11 @@ public class CalculatorTest {
         assertThat(actual, is(expected));
     }
 
+    @Test
+    public void divide3To2(){
+        Calculator calc = new Calculator();
+        float expected = 1.5f;
+        float actual = calc.divide(3, 2);
+        assertThat(actual, is(expected));
+    }
 }

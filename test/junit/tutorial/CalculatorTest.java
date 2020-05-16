@@ -38,4 +38,12 @@ public class CalculatorTest {
         float actual = calc.divide(3, 2);
         assertThat(actual, is(expected));
     }
+
+    // メソッドが例外を送出することを検証する時は、expected属性を利用
+    @Test(expected = IllegalArgumentException.class)
+    public void divide5To0(){
+        Calculator calc = new Calculator();
+        calc.divide(5, 0);
+    }
+
 }

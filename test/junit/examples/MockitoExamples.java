@@ -37,11 +37,20 @@ public class MockitoExamples {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void 例外を送出するメソッド() {
+    public void 例外を送出するメソッド() throws Exception {
         List<String> stub = mock(List.class);
         when(stub.get(0)).thenReturn("Hello");
         when(stub.get(1)).thenReturn("World");
         when(stub.get(2)).thenThrow(new IndexOutOfBoundsException());
         stub.get(2);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void 戻り値がvoid型のメソッドで例外を送出() throws Exception {
+        List<String> stub = mock(List.class);
+        doThrow(new RuntimeException()).when(stub).clear();
+
+        // 例外を送出
+        stub.clear();
     }
 }

@@ -22,4 +22,17 @@ public class MockitoExamples {
         assertThat(mock.get(0), is(nullValue()));
         assertThat(mock.contains("Hello"), is(false));
     }
+
+    @Test
+    public void スタブメソッドの設定() throws Exception {
+
+        // スタブオブジェクトの作成
+        List<String> stub = mock(List.class);
+
+        // スタブオブジェクトの設定
+        when(stub.get(0)).thenReturn("Hello");
+
+        // 検証
+        assertThat(stub.get(0), is("Hello"));
+    }
 }

@@ -53,4 +53,17 @@ public class MockitoExamples {
         // 例外を送出
         stub.clear();
     }
+
+    @Test
+    public void モックの検証() throws Exception {
+        List<String> mock = mock(List.class);
+        mock.clear();
+        mock.add("Hello");
+        mock.add("Hello");
+        mock.add("World");
+        verify(mock).clear();
+        verify(mock, times(2)).add("Hello");
+        verify(mock, times(1)).add("World");
+        verify(mock, never()).add("Hello World");
+    }
 }
